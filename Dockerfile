@@ -9,7 +9,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 
 RUN pip3 install pocketsphinx
 
-RUN git clone -b 'master' https://github.com/sc0ty/subsync.git
+RUN git clone -b '0.14' https://github.com/sc0ty/subsync.git
 
 WORKDIR /subsync
 
