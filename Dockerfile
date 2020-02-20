@@ -1,4 +1,4 @@
-FROM python:3.7.5-buster
+FROM python:3
 
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections \
   && apt-get update -q \
@@ -14,16 +14,10 @@ RUN git clone -b '0.14' https://github.com/sc0ty/subsync.git
 WORKDIR /subsync
 
 RUN cp subsync/config.py.template subsync/config.py
-RUN sed -i '/wxPython==4.0.6/d' ./requirements.txt
 RUN pip3 install -r requirements.txt
-WORKDIR /subsync/gizmo
-
-RUN python3 setup.py build
-RUN python3 setup.py install
 
 WORKDIR /subsync
 
-RUN python3 setup.py build
-RUN python3 setup.py install
+RUN pip3 install .
 
 ENTRYPOINT [ "python3", "./subsync.py" ]
