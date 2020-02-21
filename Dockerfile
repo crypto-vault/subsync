@@ -17,4 +17,4 @@ RUN cp subsync/config.py.template subsync/config.py
 RUN pip3 install -r requirements.txt
 RUN pip3 install .
 
-ENTRYPOINT ["/bin/sh"]
+ENTRYPOINT ["runit"]
