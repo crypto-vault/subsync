@@ -16,3 +16,5 @@ WORKDIR /subsync
 RUN cp subsync/config.py.template subsync/config.py
 RUN pip3 install -r requirements.txt
 RUN pip3 install .
+
+CMD ["cron", "-f"]
