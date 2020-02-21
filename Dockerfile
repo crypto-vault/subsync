@@ -20,4 +20,4 @@ WORKDIR /subsync
 
 RUN pip3 install .
 
-ENTRYPOINT [ "python3", "./subsync.py" ]
+ENTRYPOINT ["/bin/bash"]
