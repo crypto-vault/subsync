@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.8.1-buster
 
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections \
   && apt-get update -q \
