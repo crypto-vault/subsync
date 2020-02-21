@@ -1,4 +1,4 @@
-FROM python:3.8.1-buster
+FROM python:3-buster
 
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections \
   && apt-get update -q \
@@ -16,5 +16,3 @@ WORKDIR /subsync
 RUN cp subsync/config.py.template subsync/config.py
 RUN pip3 install -r requirements.txt
 RUN pip3 install .
-
-ENTRYPOINT ["runit"]
