@@ -14,7 +14,14 @@ RUN git clone -b '0.14' https://github.com/sc0ty/subsync.git
 WORKDIR /subsync
 
 RUN cp subsync/config.py.template subsync/config.py
+RUN sed -i '/wxPython==4.0.6/d' ./requirements.txt
 RUN pip3 install -r requirements.txt
 RUN pip3 install .
+RUN python3 ./subsync.py
+
+RUN apt-get install -y cron logrotate --option=Dpkg::Options::=--force-confdef && \
+ chmod 0644 /etc/cron.d/cron_sync && \
+ crontab /etc/cron.d/cron_sync && \
+ touch /var/log/cron.log && \
 
 CMD ["cron", "-f"]
