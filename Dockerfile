@@ -15,9 +15,5 @@ WORKDIR /subsync
 
 RUN cp subsync/config.py.template subsync/config.py
 RUN pip3 install -r requirements.txt
-
-WORKDIR /subsync
-
 RUN pip3 install .
 
-ENTRYPOINT ["/bin/bash"]
