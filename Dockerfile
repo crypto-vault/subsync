@@ -6,7 +6,6 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-
 RUN pip3 install pocketsphinx
 
 RUN git clone -b '0.14' https://github.com/sc0ty/subsync.git
@@ -14,7 +13,6 @@ RUN git clone -b '0.14' https://github.com/sc0ty/subsync.git
 WORKDIR /subsync
 
 RUN cp subsync/config.py.template subsync/config.py
-RUN sed -i '/wxPython==4.0.6/d' ./requirements.txt
 RUN pip3 install -r requirements.txt
 RUN pip3 install .
 
