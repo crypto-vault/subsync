@@ -18,9 +18,7 @@ RUN sed -i '/wxPython==4.0.6/d' ./requirements.txt
 RUN pip3 install -r requirements.txt
 RUN pip3 install .
 
-RUN apt-get install -y cron logrotate --option=Dpkg::Options::=--force-confdef && \
- chmod 0644 /etc/cron.d/cron_sync && \
- crontab /etc/cron.d/cron_sync && \
- touch /var/log/cron.log && \
+RUN debconf-set-selections \
+  && apt-get install -qy cron logrotate
 
 CMD ["cron", "-f"]
