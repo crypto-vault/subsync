@@ -2,7 +2,7 @@ FROM python:3-buster
 
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections \
   && apt-get update -q \
-  && apt-get install -qy swig ffmpeg libsphinxbase-dev gcc automake autoconf libasound2-dev python3-dev python3-pip build-essential swig git libpulse-dev libtool bison swig libavutil-dev libswscale-dev python3-dev libpulse-dev libpocketsphinx-dev libavformat-dev libswresample-dev libavdevice-dev libavfilter-dev python3-pocketsphinx \
+  && apt-get install -qy cron logrotate swig ffmpeg libsphinxbase-dev gcc automake autoconf libasound2-dev python3-dev python3-pip build-essential swig git libpulse-dev libtool bison swig libavutil-dev libswscale-dev python3-dev libpulse-dev libpocketsphinx-dev libavformat-dev libswresample-dev libavdevice-dev libavfilter-dev python3-pocketsphinx \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -17,8 +17,5 @@ RUN cp subsync/config.py.template subsync/config.py
 RUN sed -i '/wxPython==4.0.6/d' ./requirements.txt
 RUN pip3 install -r requirements.txt
 RUN pip3 install .
-
-RUN debconf-set-selections \
-  && apt-get install -qy cron logrotate
 
 CMD ["cron", "-f"]
