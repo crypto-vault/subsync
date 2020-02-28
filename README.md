@@ -8,8 +8,4 @@ Share some movie/tv libraries to the docker when setup, for example:
 
 Then you can call docker in your scripts as:
 
-docker exec subsync /bin/bash -c "subsync --cli sync --ref '/media/movies/movie/movie.mkv' --sub '/media/movies/movie/movie.srt.original'  --out '/media/movies/movie/movie.srt'"
-
-Copy/rename original srt file to original before running script to have a backup:
-
-cp '/media/movies/movie/movie.srt' '/media/movies/movie/movie.srt.original'
+docker exec subsync /bin/bash -c "subsync --cli sync --ref '/media/movies/movie/movie.mkv' --sub '/media/movies/movie/movie.srt'  --out '/media/movies/movie/movie.out.srt'"
