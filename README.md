@@ -1,4 +1,5 @@
-# subsync
+# subsync sc0ty (v0.14.0)
+
 https://github.com/sc0ty/subsync (Docker version)
 
 Share some movie/tv libraries to the docker when setup, for example:
