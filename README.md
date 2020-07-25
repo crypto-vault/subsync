@@ -1,4 +1,4 @@
-# subsync sc0ty (v0.15.0)
+# subsync sc0ty (v0.16.0)
 
 https://github.com/sc0ty/subsync (Docker version)
 
